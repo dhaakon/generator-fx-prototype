@@ -94,7 +94,12 @@ var FxPrototypeGenerator = yeoman.generators.Base.extend({
 
     this.template('_package.json', 'package.json');
     this.copy('_Gruntfile.coffee', 'Gruntfile.coffee');
-    if (this.isPhysics) this.copy('_physics.min.js', 'public/javascripts/vendor/physics.min.js');
+
+    if (this.isPhysics){
+      this.copy('_physics.min.js', 'public/javascripts/vendor/physics.min.js');
+      this.copy('coffeephysics.coffee', 'src/coffee/coffeephysics.coffee');
+    }
+    
     this.template('index.html', 'public/index.html');
     this.template('main.coffee', 'src/coffee/main.coffee')
     this.template('_bower.json', 'bower.json');

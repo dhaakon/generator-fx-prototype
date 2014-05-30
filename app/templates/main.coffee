@@ -1,3 +1,5 @@
+#<% if (isPhysics) { %>import coffeephysics.coffee <% } %>
+
 class Prototype
   # sketch instance
   sketch : null
@@ -6,16 +8,21 @@ class Prototype
   mouse: x:0, y:0
 
   constructor: ->
-    options =
-      container : document.body
+    @createSketch()
+    @addListeners()
 
-    @sketch = Sketch.create options
-
+  addListeners: ->
     @sketch.draw = @draw
     @sketch.mousemove = @onmousemove
     @sketch.mouseup = @onmouseup
     @sketch.mousedown = @onmousedown
     @sketch.mouseleave = @onmouseleave
+
+  createSketch:->
+    options =
+      container : document.body
+
+    @sketch = Sketch.create options
 
   draw: =>
 
