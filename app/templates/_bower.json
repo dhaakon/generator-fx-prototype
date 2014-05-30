@@ -1,0 +1,11 @@
+{
+  "name": "<%= _.slugify(prototypeName) %>",
+  "version": "0.0.0",
+  "dependencies": {
+    "eventEmitter" : "~4.2.7",
+    "sketch.js":"*"<% if (isThreeJS) { %>,
+    "three.js":"*"<% } %><% if (isD3) { %>,
+    "d3":"3.4.8"<% } %>
+  }
+}
+
