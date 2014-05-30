@@ -1,4 +1,4 @@
-# generator-fx-prototype [![Build Status](https://secure.travis-ci.org/dhaakon/generator-fx-prototype.png?branch=master)]
+# generator-fx-prototype
 
 > [Yeoman](http://yeoman.io) generator
 
