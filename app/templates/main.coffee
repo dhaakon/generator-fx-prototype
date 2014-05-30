@@ -1,5 +1,8 @@
-class Main
+class Prototype
+  # sketch instanace
   sketch : null
+  isMouseDown : false
+
   constructor: ->
     options =
       container : document.body
@@ -10,10 +13,21 @@ class Main
     @sketch.mousemove = @onmousemove
     @sketch.mouseup = @onmouseup
     @sketch.mousedown = @onmousedown
+    @sketch.mouseleave = @onmouseleave
 
-  draw: ->
-  onmousemove:->
-  onmouseup:->
-  onmousedown:->
+  draw: =>
 
-window.onload = (-> new Main() )
+  onmousemove:(event)=>
+    @mouse.x = event.x
+    @mouse.y = event.y
+
+  onmouseup:=>
+    @isMouseDown = false
+
+  onmousedown:=>
+    @isMouseDown = true
+
+  onmouseleave:=>
+    @isMouseDown = false
+
+window.onload = (-> new Prototype() )
