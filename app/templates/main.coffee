@@ -1,7 +1,9 @@
 class Prototype
-  # sketch instanace
+  # sketch instance
   sketch : null
-  isMouseDown : false
+  _isMouseDown : false
+
+  mouse: x:0, y:0
 
   constructor: ->
     options =
@@ -22,12 +24,16 @@ class Prototype
     @mouse.y = event.y
 
   onmouseup:=>
-    @isMouseDown = false
+    @isMouseDown(false)
 
   onmousedown:=>
-    @isMouseDown = true
+    @isMouseDown(true)
 
   onmouseleave:=>
-    @isMouseDown = false
+    @isMouseDown(false)
+
+  isMouseDown: (bool)->
+    @_isMouseDown = bool
+
 
 window.onload = (-> new Prototype() )

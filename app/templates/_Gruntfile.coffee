@@ -1,4 +1,4 @@
-module.exports = (grunt) ->
+module.exports = ->
   options =
     watch :
       options :
@@ -29,17 +29,17 @@ module.exports = (grunt) ->
         path: 'http://localhost:<%= connect.server.options.port %>'
 
 
-  grunt.loadNpmTasks 'grunt-coffee-percolator-v2'
-  grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-contrib-copy'
-  grunt.loadNpmTasks 'grunt-contrib-connect'
-  grunt.loadNpmTasks 'grunt-open'
-  grunt.loadNpmTasks 'grunt-contrib-livereload'
+  @loadNpmTasks 'grunt-coffee-percolator-v2'
+  @loadNpmTasks 'grunt-contrib-watch'
+  @loadNpmTasks 'grunt-contrib-copy'
+  @loadNpmTasks 'grunt-contrib-connect'
+  @loadNpmTasks 'grunt-open'
+  @loadNpmTasks 'grunt-contrib-livereload'
 
-  grunt.initConfig options
+  @initConfig options
 
   defaultOptions = ['percolator:main','copy', 'open', 'connect:server', 'watch']
   buildOptions = ['percolator:main','copy']
 
-  grunt.registerTask 'serve', defaultOptions
-  grunt.registerTask 'build', buildOptions
+  @registerTask 'serve', defaultOptions
+  @registerTask 'build', buildOptions

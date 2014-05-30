@@ -58,6 +58,11 @@ var FxPrototypeGenerator = yeoman.generators.Base.extend({
       name:'isThreeJS',
       message:'Will this prototype use Three.js?',
       type:'confirm'
+    },
+    {
+      name:'isPhysics',
+      message:'Will this prototype use physics?',
+      type:'confirm'
     }];
 
 
@@ -66,6 +71,7 @@ var FxPrototypeGenerator = yeoman.generators.Base.extend({
       this.renderingContext = props.canvasContext;
       this.isD3 = props.isD3;
       this.isThreeJS = props.isThreeJS;
+      this.isPhysics = props.isPhysics;
       this.hasSVG = props.hasSVG;
 
       done();
@@ -87,7 +93,8 @@ var FxPrototypeGenerator = yeoman.generators.Base.extend({
     }
 
     this.template('_package.json', 'package.json');
-    this.copy('Gruntfile.coffee', 'Gruntfile.coffee');
+    this.copy('_Gruntfile.coffee', 'Gruntfile.coffee');
+    if (this.isPhysics) this.copy('_physics.min.js', 'public/javascripts/vendor/physics.min.js');
     this.template('index.html', 'public/index.html');
     this.template('main.coffee', 'src/coffee/main.coffee')
     this.template('_bower.json', 'bower.json');
