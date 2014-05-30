@@ -2,8 +2,12 @@
 
 > [Yeoman](http://yeoman.io) generator
 
+This is a yeoman generator in order to make the build process for
+prototyping animations simpler.
+
 
 ## Getting Started
+First yeoman is needed for installation
 
 ```bash
 $ npm install -g yo
