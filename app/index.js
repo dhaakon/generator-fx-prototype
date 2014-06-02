@@ -4,7 +4,10 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var chalk = require('chalk');
-
+var grunt = require('grunt');
+var _ = require('underscore');
+var _str = require('underscore.string');
+var wrench = require('wrench');
 
 var FxPrototypeGenerator = yeoman.generators.Base.extend({
   init: function () {
@@ -79,6 +82,14 @@ var FxPrototypeGenerator = yeoman.generators.Base.extend({
   },
 
   app: function () {
+    var self = this,
+        dir = _str.slugify(this.prototypeName);
+
+    this.mkdir(dir);
+    this.destinationRoot(dir);
+
+    grunt.file.setBase( this.src._destBase );
+
     this.mkdir('src');
     this.mkdir('src/coffee');
 
@@ -87,19 +98,34 @@ var FxPrototypeGenerator = yeoman.generators.Base.extend({
     this.mkdir('public/javascripts/vendor');
     this.mkdir('public/images');
     this.mkdir('public/stylesheets');
+    this.mkdir('public/json');
 
     if (this.hasSVG){
+      var svgs = grunt.file.expand(path.join( '../', '*.svg'));
+      var hasImageFolder = grunt.file.isDir('../images');
+
       this.mkdir('svg');
+
+      if (svgs !== undefined && svgs.length > 0){
+        _.each(svgs, function(file){
+          var tmpStr = file.replace('../', '');
+          grunt.file.copy( file, 'svg/' + tmpStr );
+        })
+      }
+      if(hasImageFolder){
+        wrench.copyDirSyncRecursive(path.join(this.src._destBase, '../images'), 'svg/images');
+      }
+
     }
 
     this.template('_package.json', 'package.json');
-    this.copy('_Gruntfile.coffee', 'Gruntfile.coffee');
+    this.template('_Gruntfile.coffee', 'Gruntfile.coffee');
 
     if (this.isPhysics){
       this.copy('_physics.min.js', 'public/javascripts/vendor/physics.min.js');
       this.copy('coffeephysics.coffee', 'src/coffee/coffeephysics.coffee');
     }
-    
+
     this.template('index.html', 'public/index.html');
     this.template('main.coffee', 'src/coffee/main.coffee')
     this.template('_bower.json', 'bower.json');

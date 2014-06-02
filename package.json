@@ -1,6 +1,6 @@
 {
   "name": "generator-fx-prototype",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Yeoman generator",
   "license": "MIT",
   "main": "app/index.js",
@@ -28,7 +28,11 @@
     "yosay": "^0.1.0"
   },
   "devDependencies": {
-    "mocha": "*"
+    "grunt": "^0.4.5",
+    "mocha": "*",
+    "underscore": "^1.6.0",
+    "underscore.string": "^2.3.3",
+    "wrench": "^1.5.8"
   },
   "peerDependencies": {
     "yo": ">=1.0.0"

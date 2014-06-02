@@ -7,8 +7,9 @@
     "bower": "~0.9.2",
     "grunt-contrib-watch": "~0.4.3",
     "grunt-open": "~0.2.0",
+    "underscore": "^1.6.0",
     "matchdep": "~0.1.2",<% if (hasSVG) {%>
-    "grunt-svg2json" : "~0.1.1",<% } %>
+    "grunt-svg2json" : "~0.1.6",<% } %>
     "grunt-coffee-percolator-v2": "~0.2.4",
     "grunt-contrib-sass":"~0.7.3",
     "grunt-contrib-copy":"~0.5.0",
