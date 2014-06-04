@@ -51,6 +51,11 @@ var FxPrototypeGenerator = yeoman.generators.Base.extend({
       message:'Will this prototype be based off svgs?',
       type:'confirm'
     },
+    {
+      name:'isSketch',
+      message:'Will this prototype use sketch.js?',
+      type:'confirm'
+    },
     // d3?
     {
       name:'isD3',
@@ -75,6 +80,7 @@ var FxPrototypeGenerator = yeoman.generators.Base.extend({
       this.isD3 = props.isD3;
       this.isThreeJS = props.isThreeJS;
       this.isPhysics = props.isPhysics;
+      this.isSketch = props.isSketch;
       this.hasSVG = props.hasSVG;
 
       done();
